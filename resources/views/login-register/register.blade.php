@@ -25,6 +25,10 @@
 
                 <button>Register</button>
 
+                <article class="redirect-lr">
+                    <a href="{{ route('login.index_login') }}">Login</a>
+                </article>
+
                 {{-- <button>Add</button> --}}
             </form>
 

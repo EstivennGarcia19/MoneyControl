@@ -8,15 +8,14 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
+
+
 
 class ChestsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
 
@@ -25,22 +24,7 @@ class ChestsController extends Controller
         return view('Chests.index_chests', compact('myChests'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+  
     public function store(Request $request)   
     {        
         // Color random para los cofres 
@@ -58,12 +42,8 @@ class ChestsController extends Controller
                 'color'=>$randomColor,
                 'user_id'=>$request->user_id
             ]
-        );
-        
-
-        
-
-
+        );    
+    
         return redirect()->route('chests.index');
     }
 
@@ -88,56 +68,83 @@ class ChestsController extends Controller
 
   
     public function add_amount(Request $request, Chests $info_chest)
-    {  
-        $numeroConComa = $request->amount;
-        $numeroSinComa = str_replace(',', '', $numeroConComa);     
-                
+    {          
+        // El numero es enviado con decimales, aca se los quitamos (19,000 = 19000)
+        $numeroSinComa = str_replace(',', '', $request->amount);     
         
-        $info_chest->name = $request->name;   
-        $info_chest->amount += $numeroSinComa;      
-        $info_chest->date = $request->date; 
+        // Si no insrta ningun valor o es 0 no insertamos nada
+        if ($numeroSinComa == 0 || $numeroSinComa == null) {
 
-        $info_chest->save(); 
-        
-        return redirect()->route('chests.index');
+            return "Perro hpta"; 
+
+        } else {
+
+            // Cuando se crea el cofre, queda con todos los campos vacios, aqui actualizamo esos campos vacios a los enviados por el formulario
+            $info_chest->name = $request->name;   
+            $info_chest->amount += $numeroSinComa;      
+            $info_chest->date = $request->date; 
+    
+            $info_chest->save(); 
+
+            // En la tabla de StalkerChest, se llevaran los registros de Ingreso y egreso del cofre
+            // Asi que aqui se inserta lo que se Agrego, cuanto, cuando y que en cofre
+            $stalker =  new StalkerChest;        
+
+            $stalker->action_per = 'Added';
+            $stalker->amount = $numeroSinComa;
+            $stalker->chest_id = $info_chest->id;
+            $stalker->created_at = Carbon::now();
+            $stalker->updated_at = Carbon::now();
+            $stalker->save();            
+                                                
+            return redirect()->back();
+        }
         
     }
 
     public function remove_amount(Request $request, Chests $info_chest)
     {  
-        
-        $numeroConComa = $request->amount;
-        $numeroSinComa = str_replace(',', '', $numeroConComa);
+        // El numero es enviado con decimales, aca se los quitamos (19,000 = 19000)
+        $numeroSinComa = str_replace(',', '', $request->amount);   
                 
-
+        // Cuando se crea el cofre, queda con todos los campos
+        //  vacios, aqui actualizamo esos campos vacios a los enviados por el formulario
         $info_chest->name = $request->name;   
         $info_chest->amount -= $numeroSinComa;   
         $info_chest->date = $request->date; 
 
         $info_chest->save(); 
+
         
-        return redirect()->route('chests.index');
+         // En la tabla de StalkerChest, se llevaran los registros de Ingreso y egreso del cofre
+        // Asi que aqui se inserta que se Retiro, cuanto, cuando y que cofre
+        $stalker =  new StalkerChest;        
+
+        $stalker->action_per = 'Removed';
+        $stalker->amount = $numeroSinComa;
+        $stalker->chest_id = $info_chest->id;
+        $stalker->created_at = Carbon::now();
+        $stalker->updated_at = Carbon::now();
+        $stalker->save();
+
+        return redirect()->back();
         
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chests  $chests
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Chests $chest)
-    {
-        //
+    {        
         $chest->delete();
-
         return redirect()->route('chests.index');
     }
+    public function changeColor($chest, $color) {
 
+        $chest = Chests::find($chest);
 
-    public function applyColor($color)
-    {
-        // Lógica para manejar el color seleccionado
-        return view('color-applied', ['color' => $color]);
+        $chest->color = '#'.$color;
+        $chest->save();                
+
+        return redirect()->back();
+        
     }
 }

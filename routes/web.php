@@ -22,13 +22,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('register/index', [LoginController::class, 'index_register'])->name('login.index_register');
 Route::get('login/index', [LoginController::class, 'index_login'])->name('login.index_login');
 Route::post('register/', [LoginController::class, 'register'])->name('login.register');
 Route::post('login/', [LoginController::class, 'login'])->name('login.login');
 Route::get('logout/', [LoginController::class, 'logout'])->name('login.logout');
+
 
 
 Route::controller(ExpensesController::class)->group(function () {
@@ -47,8 +48,8 @@ Route::controller(ChestsController::class)->group(function () {
     Route::get('chest/{id}/edit', 'show')->middleware('auth')->name('chest.show');
     Route::put('chest/{info_chest}/add', 'add_amount')->middleware('auth')->name('chest.add_amount');
     Route::put('chest/{info_chest}/remove', 'remove_amount')->middleware('auth')->name('chest.remove_amount');
-    Route::delete('chest/deleteChest/{chest}', 'destroy')->middleware('auth')->name('chests.destroy');
-    Route::get('apply-color/{color}', 'applyColor')->middleware('auth')->name('apply.color');
+    Route::delete('chest/deleteChest/{chest}', 'destroy')->middleware('auth')->name('chests.destroy');    
+    Route::post('chest/{chest}/changeColor/{color}', 'changeColor')->name('chest.changeColor');
 
 });
 
@@ -68,7 +69,8 @@ Route::controller(UserController::class)->group(function () {
    
     Route::get('profile/see/{id}', 'show')->middleware('auth')->name('profile.show');
     Route::get('profile/edit/{user}', 'edit')->middleware('auth')->name('profile.edit');
-    Route::put('profile/update/{user}', 'update')->middleware('auth')->name('profile.update');
+    Route::put('profile/update/{user}', 'update')->middleware('auth')->name('profile.update');    
+    Route::delete('profile/byebye/{user}', 'destroy')->name('user.destroy');
 });
 
 

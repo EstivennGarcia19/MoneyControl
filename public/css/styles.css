@@ -10,12 +10,20 @@
     
     
     /* Chests Colors */
-    --color1: #ff696b;
+    /* --color1: #ff696b;
     --color2: #7b55ff;
     --color3: #ff8e60;
     --color4: #2bc2ff;
     --color5: #5b65fe;
-    --color6: #96da45;
+    --color6: #96da45; */
+
+    /* CHESTS COLORS */
+    --color1: #ff4b59;
+    --color2: #1896fe;
+    --color3: #704df9;
+    --color4: #ff5d2a;
+    --color5: #2bc2ff;
+    --color6: #000000;
 
 
     /* BLACK THEME */
@@ -124,8 +132,6 @@ body {
     text-decoration:none;
     font-weight: 600;
     font-size: 18px;
-    
-
 }
 
 #welcome .btn-container a:last-child {
@@ -173,12 +179,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 
 #home .user-information .settings {
-    font-size: 25px;    
+    font-size: 30px;    
 }
 
 #home .user-information .settings a {    
@@ -186,17 +192,14 @@ body {
 }
 
 #home .photo-user {
-    width: 60px;
-    margin-right: 8px;
-    
-    
+    /* width: 60px; */
+    height: 50px;
+    margin-right: 8px;       
 }
-
-
 
 #home .photo-user img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 50%;
 }
 
@@ -671,6 +674,11 @@ body {
     
 }
 
+#chests .chest a {
+    text-decoration: none;
+    color: #fff;
+}
+
 
 .tittle-chest {
     width: 70%;
@@ -682,8 +690,7 @@ body {
     margin: 6px 0;
     font-weight: 700;    
 }
-.current-amount a {
-    text-decoration: none;
+.current-amount span {
     color: #fff;
     font-size: 25px;
 }
@@ -1525,7 +1532,7 @@ body {
 }
 #months-containers .month {
     min-width: 98%;
-    height: 336px;
+    height: 280px;
     margin: auto;
     border-radius: 22px;
     /* background-color: #F0C38E; */
@@ -1591,8 +1598,9 @@ body {
     /* padding: 0 30px; */
     position: relative;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 10px;
     padding-bottom: 100px;
     color: #fff;
 }
@@ -1603,8 +1611,8 @@ body {
 }
 
 #days-container .day {
-    width: 104px;
-    height: 106px;
+    width: 90px;
+    height: 90px;
     border-radius: 20px;
     background-color: transparent;
     display: flex;
@@ -1781,9 +1789,7 @@ body {
     position: relative;
 }
 
-#register .tittle {
-    /* margin-top: 30px; */
-}
+
 #register .tittle h2 {
     color: #fff;
     font-size: 30px;
@@ -1851,6 +1857,19 @@ body {
 }
 
 
+#register .redirect-lr {
+    width: 100%;
+    text-align: center;
+}
+
+#register .redirect-lr a {
+    text-decoration: none;
+    /* color: var(--primary-color); */
+    color: var(--color-text-plantilla);
+    font-weight: 600;
+}
+
+
 
 
 
@@ -1870,7 +1889,7 @@ body {
 
 #profile .tittle h2 {
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
 }
 #profile-form {
     margin-top: 30px;
@@ -1924,8 +1943,8 @@ body {
     justify-content: center;
 }
 #profile #photo-profile .cont-img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     overflow: hidden;
     position: relative;
@@ -2007,6 +2026,16 @@ body {
     border-radius: 22px;
 }
 
+#selectColor .colors-chests {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 16px;
+
+}
+
 
 /* #selectColor .my-content-modal {
     width: 100%;    
@@ -2053,9 +2082,7 @@ body {
 }
 
 
-.colors-chests {
 
-}
 
 
 .color-circle {
@@ -2064,11 +2091,56 @@ body {
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid transparent;
+    transition: .4s;
 }
 
 .color-circle.selected {
-    border-color: black;
-}w
+    /* border-color: black; */
+    width: 50px;
+    height: 50px;
+}
+
+
+
+#byebye {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+#byebye h1 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+#byebye p {
+    color: var(--color-text-plantilla);
+    margin-bottom: 30px;
+}
+
+#byebye .cont-img img {
+    width: 100%;
+}
+#byebye .btn {
+    width: 100%;
+    margin-top: 30px;
+    
+}
+#byebye .btn a {
+    width: 80%;
+    background-color: var(--primary-color);
+    padding: 20px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 15px;
+
+}
 
 
 
@@ -2089,3 +2161,13 @@ body {
       opacity: 1;
     }
   }
+
+
+
+
+@media only screen and (max-width: 360px) {
+    #home-history {
+        /* padding: 0; */
+    }
+}
+

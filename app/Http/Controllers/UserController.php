@@ -37,4 +37,13 @@ class UserController extends Controller
         
         return view('Profile.user_profile', compact('user'));
     }
+
+    
+    public function destroy(User $user) {
+        
+                
+        $user->delete();                
+        return view("Profile.byebye");
+
+    }
 }

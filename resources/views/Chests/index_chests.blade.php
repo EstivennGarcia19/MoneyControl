@@ -43,24 +43,28 @@ use Carbon\Carbon;
                     <?php $copAmount = number_format($chest->amount, 0, ',', ','); ?>
 
                     <article class="chest" style="background-color:{{ $chest->color }}">
-                        <div class="circle-chest">
-                            <img src="{{ asset('media/cofre-icon3.png') }}" alt="">
-                        </div>
 
-                        <div class="tittle-chest">
-                            <span>{{ $chest->name }}</span>
-                        </div>
+                        <a href="{{ route('chest.show', $chest->id) }}">
 
-                        <div class="current-amount">
-                            <a href="{{ route('chest.show', $chest->id) }}">${{ $copAmount }}</a>
-                        </div>
-
-                        <div class="date-created">
-                            <span>Created</span>
-                            {{-- <span>01 Feb</span> --}}
-                            <span>{{ Carbon::parse($chest->date)->format('d M') }}
-                            </span>
-                        </div>
+                            <div class="circle-chest">
+                                <img src="{{ asset('media/cofre-icon3.png') }}" alt="">
+                            </div>
+    
+                            <div class="tittle-chest">
+                                <span>{{ $chest->name }}</span>
+                            </div>
+    
+                            <div class="current-amount">
+                                <span href="#">${{ $copAmount }}</span>
+                            </div>
+    
+                            <div class="date-created">
+                                <span>Created</span>
+                                {{-- <span>01 Feb</span> --}}
+                                <span>{{ Carbon::parse($chest->date)->format('d M') }}
+                                </span>
+                            </div>
+                        </a>
                     </article>
                 @endforeach
             @endif

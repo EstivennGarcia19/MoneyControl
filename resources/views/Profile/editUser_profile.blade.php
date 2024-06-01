@@ -1,6 +1,6 @@
 @extends('Layouts.html')
 @section('tittle-head')
-@extends('Layouts.nav.nav-bar')
+    @extends('Layouts.nav.nav-bar')
     Profile
 @endsection
 
@@ -18,21 +18,27 @@
 
         <article class="form-container">
 
-            <form id="register-form" action="{{ route('profile.update', $user) }}" method="POST">
-
+            <form id="register-form" action="{{ route('profile.update', $user) }}" method="POST">6
                 @csrf
                 @method('PUT')
                 <article id="photo-profile">
                     <div class="cont-img">
-                        <img src="https://i.pinimg.com/736x/0d/3f/5d/0d3f5d667fe30966f1c0e4e5c1cac477.jpg" alt="">                        
+                        <img src="https://i.pinimg.com/originals/ef/e0/7d/efe07d9af104f338df556f48ba20ad62.png"
+                            alt="">
                     </div>
                 </article>
-                <input type="text" name="name" placeholder="UserName" required value="{{$user->name}}">
-                <input type="text" name="email" placeholder="Email" required value="{{$user->email}}">            
+                <input type="text" name="name" placeholder="UserName" required value="{{ $user->name }}">
+                <input type="text" name="email" placeholder="Email" required value="{{ $user->email }}">
 
-                <button class="btn btn-success btn-edit-profile update">Update</button>
-
-                {{-- <button>Add</button> --}}
+                <button class="btn btn-success p-3 mb-3">Update</button>
+            </form>
+            {{-- Formulario para eliminar --}}
+            <form class="d-flex flex-column" action="{{ route('user.destroy', $user) }}" method="POST"
+                id="form-delete-user">
+                @csrf
+                @method('DELETE')
+                <button form="form-delete-user" class="btn btn-danger p-3" onclick="return confirm('¿Are you sure bro?')"
+                    type="submit">Delete Account</button>
             </form>
 
         </article>

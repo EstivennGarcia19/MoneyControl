@@ -14,7 +14,7 @@
 
                 <div class="cont-info-user">
                     <div class="photo-user">
-                        <img src="https://i.pinimg.com/736x/0d/3f/5d/0d3f5d667fe30966f1c0e4e5c1cac477.jpg" alt="">
+                        <img src="https://i.pinimg.com/originals/ef/e0/7d/efe07d9af104f338df556f48ba20ad62.png" alt="">
                     </div>
                     <div class="name-user">
                         <span><strong>Welcome!</strong></span><br>

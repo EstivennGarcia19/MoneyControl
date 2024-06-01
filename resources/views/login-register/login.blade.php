@@ -32,6 +32,11 @@
                 <input type="password" name="password" placeholder="Create a password" required>
 
                 <button>Login</button>
+
+                <article class="redirect-lr">
+                    <a href="{{ route('login.index_register') }}">Are you new?</a>
+                </article>
+
             </form>
         </article>
     </section>

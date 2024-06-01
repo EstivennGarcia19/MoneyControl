@@ -16,12 +16,7 @@ return new class extends Migration
             $table->bigInteger('total')->nullable();
             $table->date('date')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();        
-            $table->foreign('user_id')->references('id')->on('users');
-            
-            // $table->date('id')->primary();
-            // $table->bigInteger('total')->nullable();
-            // $table->unsignedBigInteger('user_id')->nullable();
-            // $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');                        
         });
     }
 

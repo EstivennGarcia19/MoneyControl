@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Days;
 use App\Models\Expenses;
 use App\Models\History;
-use App\Models\StalkerIncomes;
+use App\Models\Incomes;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,15 +20,6 @@ class HistoryController extends Controller
      */
     public function index()
     {           
-        
-        
-        // $year = Carbon::now()->year;                   
-        // $months  = DB::table('days')            
-        //     ->whereYear('id', $year)
-        //     ->selectRaw('MONTH(id) AS month, YEAR(id) as year, MIN(id) as date, SUM(total) AS total')
-        //     ->groupByRaw('YEAR(id), MONTH(id)')->orderByRaw('MONTH(id) DESC')   
-        //     ->get();
-
 
         // La variable months guardara la consuta en la cual se pide el total, la fecha normal y la fecha(solo mes)
         $months = DB::table('expenses')
@@ -43,11 +34,12 @@ class HistoryController extends Controller
         
         return view('History.homeHistory', ['collection'=>$months]);
     }
+
     
     public function incomes()
-    {
-        $thisIncomes = StalkerIncomes::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
-        return view('History.incomesHistory', ['thisIncomes' => $thisIncomes]);
+    {        
+        $incomes = Incomes::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        return view('History.incomesHistory', compact('incomes'));
     }
     
     
@@ -147,8 +139,7 @@ class HistoryController extends Controller
         
 
 
-        return view("History.detailDayHistory", ['date_tittle'=>$date_tittle,'collection'=>$detail_days]);        
-        // return "Hola macaco = ".$detail_days;
+        return view("History.detailDayHistory", ['date_tittle'=>$date_tittle,'collection'=>$detail_days]);                
         
     }
 

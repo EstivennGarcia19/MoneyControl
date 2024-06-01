@@ -14,7 +14,6 @@
         <section id="section-tittle-chest">
             <div class="tittle">
                 <div class="back" onclick="back()"> <i class='bx bx-chevron-left'></i></div>
-
             </div>
             <div class="tittle">
                 <div><span>{{ $info_chest->name }}</span></div>
@@ -22,17 +21,34 @@
             <div class="more-options" onclick="openOptions()">
                 <i class='bx bx-dots-vertical-rounded'></i>
                 <article class="options">
-                    <form action="{{ route('chests.destroy', ['chest' => $info_chest->id]) }}" method="POST">
+                    <form action="{{ route('chests.destroy', ['chest' => $info_chest->id]) }}" method="POST" id="form-delete-chest">
                         @csrf
                         @method('DELETE')
-                        <button href="#"><i class='bx bx-trash'></i><span>Delete</span></button>
+                        <button href="#" form="form-delete-chest"><i class='bx bx-trash'></i><span>Delete</span></button>
                     </form>
-                    {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#selectColor"><i class='bx bx-brush-alt'></i><span>Edit</span></a> --}}
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#selectColor"><i
+                            class='bx bx-brush-alt'></i><span>Edit</span></a>
                 </article>
             </div>
 
 
         </section>
+        <!-- Flexbox container for aligning the toasts -->
+        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+
+            <!-- Then put toasts within -->
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
 
         {{-- Tarjeta principal del dinero actual  --}}
         <article id="avabilable-balance">
@@ -119,7 +135,8 @@
                     <div class="modal-body">
                         <div class="my-content-modal">
 
-                            <form action="{{ route('chest.add_amount', $info_chest) }}" method="POST">
+                            <form action="{{ route('chest.add_amount', $info_chest) }}" method="POST"
+                                id="form-add_amount">
                                 @method('PUT')
                                 @csrf
                                 <article>
@@ -133,7 +150,7 @@
                                         value="{{ $info_chest->date }}">
                                 </article>
 
-                                <button><i class='bx bx-plus'></i></button>
+                                <button form="form-add_amount"><i class='bx bx-plus'></i></button>
                             </form>
 
 
@@ -183,33 +200,43 @@
         </div>
 
         <div class="modal fade" id="selectColor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="selectColorLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-between">
-                    <h1 class="modal-title fs-5" id="selectColor">Select a color</h1>
-                    <button type="button" class="btn text-light" data-bs-dismiss="modal"><i
-                            class='bx bx-x'></i></button>
-                </div>
-                <div class="modal-body">
-                    <div class="my-content-modal">
-                        <div class="d-flex justify-content-around colors-chests">
-                            <div class="color-circle bg-primary" data-color="primary"></div>
-                            <div class="color-circle bg-secondary" data-color="secondary"></div>
-                            <div class="color-circle bg-success" data-color="success"></div>
-                            <div class="color-circle bg-danger" data-color="danger"></div>
-                            <div class="color-circle bg-warning" data-color="warning"></div>
-                            <div class="color-circle bg-info" data-color="info"></div>
-                        </div>                    
-                    </div>                                            
-                        <button type="button" class="btn btn-primary" id="applyColorBtn">Aplicar Color</button>                    
-                </div>
-                
+            aria-labelledby="selectColorLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <h1 class="modal-title fs-5" id="selectColor">Select a color</h1>
+                        <button type="button" class="btn text-light" data-bs-dismiss="modal"><i
+                                class='bx bx-x'></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-content-modal">
+                            <form action="{{ route('chest.changeColor', ['chest' => $info_chest->id, 'color' => 'replace']) }}"
+                                id="form-change-cc" method="POST">
+                                @csrf
+                                <div class="colors-chests">
+                                    <div class="color-circle" style="background: #ff4b59"
+                                        onclick="changeColor('ff4b59')"></div>
+                                    <div class="color-circle" style="background: #1896fe"
+                                        onclick="changeColor('1896fe')"></div>
+                                    <div class="color-circle" style="background: #704df9"
+                                        onclick="changeColor('704df9')"></div>
+                                    <div class="color-circle" style="background: #ff5d2a"
+                                        onclick="changeColor('ff5d2a')"></div>
+                                    <div class="color-circle" style="background: #2bc2ff"
+                                        onclick="changeColor('2bc2ff')"></div>
+                                    <div class="color-circle" style="background: #000000"
+                                        onclick="changeColor('000000')"></div>
+                                </div>
+                            </form>
+                            <button class="mt-5"   form="form-change-cc">Change</button>
+                        </div>
+                    </div>
 
 
+
+                </div>
             </div>
         </div>
-    </div>
     </section>
 @endsection
 
@@ -217,16 +244,16 @@
     <script src="{{ asset('js/formatCOP.js') }}"></script>
     {{-- Script para selecciona color --}}
     <script>
-         $(document).ready(function () {
+        $(document).ready(function() {
             var selectedColor = null;
 
-            $('.color-circle').on('click', function () {
+            $('.color-circle').on('click', function() {
                 $('.color-circle').removeClass('selected');
                 $(this).addClass('selected');
                 selectedColor = $(this).data('color');
             });
 
-            $('#applyColorBtn').on('click', function () {
+            $('#applyColorBtn').on('click', function() {
                 if (selectedColor) {
                     window.location.href = `/apply-color/${selectedColor}`;
                 } else {
@@ -235,4 +262,6 @@
             });
         });
     </script>
+    {{-- Cambio de color para los cofres  --}}
+    <script src="{{ asset('js/changeColorChest.js') }}"></script>
 @endpush

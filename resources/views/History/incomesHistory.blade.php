@@ -27,13 +27,13 @@ use Carbon\Carbon;
             <p>You've register these Incomes</p>
 
 
-            @if ($thisIncomes->isEmpty())
+            @if ($incomes->isEmpty())
                 <section class="there-nothing">
                     <span class="text-danger">No incomes yet</span>
                     <img src="{{ asset('media/nothing4.png') }}" alt="">
                 </section>
             @else
-                @foreach ($thisIncomes as $item)
+                @foreach ($incomes as $item)
                     <?php $copAmount = number_format($item->amount, 0, ',', ','); ?>
                     <div class="history">
                         <article class="info">
@@ -43,7 +43,6 @@ use Carbon\Carbon;
                             </div>
                             <div class="date-state">
                                 <h3 class="text-light">{{ Carbon::parse($item->date)->formatLocalized('%A %d %B %Y') }}</h3>
-
                             </div>
 
                         </article>

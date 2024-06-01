@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('date')->nullable();
             $table->string('color');
             $table->unsignedBigInteger('user_id');  
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });
 
@@ -33,29 +33,7 @@ return new class extends Migration
             END         
         ");
         
-        DB::unprepared("        
-
-            CREATE TRIGGER StalkerChest
-            BEFORE UPDATE ON chests
-            FOR EACH ROW
-            BEGIN            
-                DECLARE accion VARCHAR(9);
-                DECLARE amount_diff INT;
-                DECLARE id_cofre INT(4);  
-            
-                SET id_cofre = OLD.id;
-                SET amount_diff = NEW.amount - COALESCE(OLD.amount, 0);
-            
-                IF amount_diff < 0 THEN
-                    SET accion = 'Removed';
-                ELSE
-                    SET accion = 'Added';
-                END IF;
-            
-                INSERT INTO stalker_chests (action_per, amount, chest_id, created_at) VALUES (accion, ABS(amount_diff), id_cofre, CURRENT_TIMESTAMP);    
-            END       
-    
-        ");
+      
     }
 
     /**
