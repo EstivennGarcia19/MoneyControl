@@ -78,7 +78,7 @@ body {
 #welcome {    
     background: var(--bg-dark);
     width: 100%;
-    padding: 60px 0;
+    padding: 20px 0;
 }
 
 #welcome #hero {
@@ -1801,6 +1801,12 @@ body {
     flex-direction: column;
     gap: 30px;
 }
+
+#register-form #remember {
+    color: var(--color-text-plantilla);
+}
+
+
 
 #register-form input {
     background-color: transparent;
