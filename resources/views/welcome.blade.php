@@ -10,7 +10,7 @@
 
     <article class="information">
         <h2>Money Control</h2>
-        <p>Joder, con esto te daras cuenta de que gastas mucho en cosas pendejas xd</p>
+        <p>Track your expenses and realize what you do with your money</p>
     </article>
 
     <article class="btn-container">

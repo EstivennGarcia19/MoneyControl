@@ -41,7 +41,7 @@
                     {{-- token para seguridad --}}
                     @csrf
                     {{-- token para seguridad --}}
-                    <input type="text" name="amount" class="price" placeholder="¿How much bro?" required>
+                    <input type="text" inputmode="numeric" name="amount" class="price" placeholder="¿How much bro?" required>
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <button class="btn-sent-income">Add amount</button>
 
@@ -108,14 +108,13 @@
             </form>
         </section>
     </div>
-
-
-    <!-- Agrega esta etiqueta script al final de tu archivo HTML justo antes del cierre del body -->
-    <script></script>
+    
 @endsection
 
 @push('scripts')
     <script src="{{ asset('js/formatCOP.js')}}"></script>
+    {{-- Esto es para que cuando salga el teclad el contenido se mueva hacia arriba y 
+        no quede tapado por el teclado del celular --}}
     <script>
         $(document).ready(function() {
             // Agrega un controlador de eventos focus a todos los campos de entrada

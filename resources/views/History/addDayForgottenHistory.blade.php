@@ -33,16 +33,13 @@ use Carbon\Carbon;
 
 
 
-
-
             <form id="forgotten-day" action="{{ route('history.addforgottenDay') }}" method="POST">
                 {{-- token para seguridad --}}
                 @csrf
                 {{-- token para seguridad --}}
-
                 <input type="text" name="name" placeholder="Full Name" required>
-                <input type="text" name="price" class="price" placeholder="Price" required>
-                <input type="date" name="date" placeholder="Date" required>
+                <input type="text" inputmode="numeric" name="price" class="price" placeholder="Price" required>
+                <input type="date" name="date" required>
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
                 <button>Add Day</button>
@@ -55,34 +52,6 @@ use Carbon\Carbon;
 
 
 
-            {{-- @if ($thisIncomes->isEmpty())
-                <section class="there-nothing">
-                    <span class="text-danger">No incomes yet</span>
-                    <img src="{{ asset('media/nothing4.png') }}" alt="">
-                </section>
-            @else
-                @foreach ($thisIncomes as $item)
-                    <?php $copAmount = number_format($item->amount, 0, ',', ','); ?>
-                    <div class="history">
-                        <article class="info">
-
-                            <div class="icon">
-                                <i class='bx bx-message-square-detail'></i>
-                            </div>
-                            <div class="date-state">
-                                <h3>{{ Carbon::parse($item->date)->formatLocalized('%A %d %B %Y') }}</h3>
-
-                            </div>
-
-                        </article>
-
-                        <article class="amount income">
-                            <span>${{ $copAmount }}</span>
-                        </article>
-
-                    </div>
-                @endforeach
-            @endif --}}
 
 
 

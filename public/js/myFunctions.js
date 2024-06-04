@@ -19,7 +19,7 @@ function closeCard() {
 
     card.classList.remove('expand');
     incomes_form.classList.remove('active');
-    btn_expand.style.display = 'inline';
+    btn_expand.style.display = 'inline-block';
 
 }
 
