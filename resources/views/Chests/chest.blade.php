@@ -4,8 +4,13 @@
 @section('tittle-head')
     My Chest
 @endsection
+<?php
+    // Converir el int (1200 a 1,200)
+    function formatCOP($amount) { return number_format($amount, 0, ',', ',') ;}
 
-<?php $copAmount = number_format($info_chest->amount, 0, ',', ','); ?>
+    // Funcion para formatear la fecha (000-00-00 00:00:00 = Sun, Jun 2024 11:16)
+    function formatDate($date) { return $date->format('D, M Y H:i'); }
+?>
 
 @section('principal-container')
     <section id="bg-container" style="background-color:{{ $info_chest->color }} ">
@@ -18,6 +23,7 @@
             <div class="tittle">
                 <div><span>{{ $info_chest->name }}</span></div>
             </div>
+            {{-- onclick abre funcion JS para mostrar opcnes de Borrar o Editar cofre --}}
             <div class="more-options" onclick="openOptions()">
                 <i class='bx bx-dots-vertical-rounded'></i>
                 <article class="options">
@@ -30,8 +36,6 @@
                             class='bx bx-brush-alt'></i><span>Edit</span></a>
                 </article>
             </div>
-
-
         </section>
      
 
@@ -39,9 +43,8 @@
         <article id="avabilable-balance">
             <div class="amount">
                 <span>Aveilable Balance</span>
-                <h2>${{ $copAmount }}</h2>
+                <h2>${{ formatCOP($info_chest->amount) }}</h2>
             </div>
-
 
             <div class="options">
                 <div class="add-money" data-bs-toggle="modal" data-bs-target="#addAmount">
@@ -62,8 +65,8 @@
             </article>
 
             <section id="my-chests">
+                
                 @foreach ($stalker as $joe)
-                    <?php $copAmount = number_format($joe->amount, 0, ',', ','); ?>
 
                     <div class="history">
                         <article class="info">
@@ -74,7 +77,7 @@
                                 </div>
                                 <div class="date-state cRed">
                                     <h3>{{ $joe->action_per }}</h3>
-                                    <span>{{ $joe->created_at }}</span>
+                                    <span>{{ formatDate($joe->created_at) }}</span>
                                 </div>
                             @endif
 
@@ -84,7 +87,7 @@
                                 </div>
                                 <div class="date-state">
                                     <h3>{{ $joe->action_per }}</h3>
-                                    <span>{{ $joe->created_at }}</span>
+                                    <span>{{ formatDate($joe->created_at) }}</span>
                                 </div>
                             @endif
 
@@ -93,12 +96,12 @@
 
                         @if ($joe->action_per == 'Removed')
                             <article class="amount">
-                                <span>- ${{ $copAmount }}</span>
+                                <span>- ${{ formatCOP($joe->amount); }}</span>
                             </article>
                         @endif
                         @if ($joe->action_per == 'Added')
                             <article class="amount">
-                                <span>${{ $copAmount }}</span>
+                                <span>${{ formatCOP($joe->amount); }}</span>
                             </article>
                         @endif
                     </div>
@@ -137,15 +140,8 @@
 
                                 <button form="form-add_amount"><i class='bx bx-plus'></i></button>
                             </form>
-
-
-
-
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
         </div>

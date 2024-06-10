@@ -6,16 +6,7 @@
     /* --primary-color: #6c64f3;   */
     --primary-color: #6b48f7;  
     --green-color:#48c9b0;
-    --red-color:#e74c3c;
-    
-    
-    /* Chests Colors */
-    /* --color1: #ff696b;
-    --color2: #7b55ff;
-    --color3: #ff8e60;
-    --color4: #2bc2ff;
-    --color5: #5b65fe;
-    --color6: #96da45; */
+    --red-color:#e74c3c;    
 
     /* CHESTS COLORS */
     --color1: #ff4b59;
@@ -36,9 +27,6 @@
     --color-green-plantilla: #03d691;
     --color-red-plantilla: #ff3b5e;
     --color-yellow-plantilla: #ffe01d;
-
-    
-
 }
 
 
@@ -607,22 +595,12 @@ body {
 
 
 #chests {    
-    width: 100%;
-    /* height: 100%; */
-    /* height: 100vh;     */
-    /* background-color: #fff; */
+    width: 100%;           
     background-color: var(--bg-dark);
     text-align: center;
-    overflow: hidden;
-    /* padding: 30px 20px;     */
-    /* padding: 30px 20px 119px 20px; */
-    /* padding: 0 35px; */
-
+    overflow: hidden;            
     position: relative;
     overflow: hidden; 
-    /* background: url("../media/chests-bg.jpg");   
-    background-position: center;
-    background-size: cover; */
     padding-bottom: 110px;
 }
 
@@ -662,7 +640,6 @@ body {
 
 #chests .chest {
     width: 170px;
-    /* background-color: var(--color1); */
     border-radius: 16px;
     padding: 15px;
     position: relative;
@@ -1531,9 +1508,9 @@ body {
     
 }
 #months-containers .month {
-    position: relative;  
+    position: relative;
     min-width: 98%;
-    padding: 45px 0;
+    padding: 36px 0 80px 0;
     margin: auto;
     border-radius: 22px;
     background-color: var(--primary-color);
@@ -2150,12 +2127,6 @@ body {
 }
 
 
-
-
-
-
-
-
 /* -----------------------------KeyFrames------------------------------- */
 @keyframes cursorBlink {
     0% {
@@ -2168,13 +2139,3 @@ body {
       opacity: 1;
     }
   }
-
-
-
-
-@media only screen and (max-width: 360px) {
-    #home-history {
-        /* padding: 0; */
-    }
-}
-
