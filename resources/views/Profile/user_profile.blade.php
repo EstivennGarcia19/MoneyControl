@@ -11,14 +11,15 @@
 
         <section id="section-tittle-profile">
             <div class="back" onclick="back()"><i class='bx bx-chevron-left'></i></div>
+            <div class="tittle text-center">
+                <h2>Mi perfil</h2>
+            </div>
+            <p>x</p>
         </section>
-        <div class="tittle text-center">
-            <h2>{{$user->name}}'s Profile</h2>
-        </div>
 
         <article class="form-container">
 
-            <form id="register-form" action="{{ route('login.login') }}" method="POST">
+            <form class="register-form" action="{{ route('login.login') }}" method="POST">
 
                 @csrf
                 <article id="photo-profile">
@@ -29,7 +30,7 @@
                 <input type="text" name="name" placeholder="UserName" required readonly value="{{$user->name}}">
                 <input type="text" name="email" placeholder="Email" required readonly value="{{$user->email}}">            
 
-                <a href="{{ route('profile.edit', $user) }}" class="btn-edit-profile">Edit Info</a>
+                <a href="{{ route('profile.edit', $user) }}" class="btn-edit-profile">Actualizar datos</a>
 
                 {{-- <button>Add</button> --}}
             </form>

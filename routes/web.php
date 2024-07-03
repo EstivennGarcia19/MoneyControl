@@ -29,6 +29,7 @@ Route::get('login/index', [LoginController::class, 'index_login'])->name('login.
 Route::post('register/', [LoginController::class, 'register'])->name('login.register');
 Route::post('login/', [LoginController::class, 'login'])->name('login.login');
 Route::get('logout/', [LoginController::class, 'logout'])->name('login.logout');
+Route::get('español/', [LoginController::class, 'español'])->name('español');
 
 
 

@@ -6,13 +6,14 @@
 
 @section('principal-container')
     <section id="register">
+        
 
 
         <section id="section-tittle-login">
             <div class="back" onclick="back()"><i class='bx bx-chevron-left'></i></div>
         </section>
         <div class="tittle">
-            <h2>Log In</h2>
+            <h2>Iniciar Sesion</h2>
         </div>
 
         <article class="form-container">
@@ -28,17 +29,17 @@
                     <div class="alert alert-danger">{{ $errors->first('password') }}</div>
                 @endif
 
-                <input type="text" name="email" placeholder="Email" required value="{{ old('email') }}">
-                <input type="password" name="password" placeholder="Create a password" required>
+                <input type="text" name="email" placeholder="Correo" required value="{{ old('email') }}">
+                <input type="password" name="password" placeholder="Contraseña" required>
                 <div class="rememberme">
                     <input type="checkbox" name="remember" id="remember">
-                    <label for="remember" class="text-light ms-2">Remember</label>
+                    <label for="remember" class="text-light ms-2">Recordar</label>
                 </div>
 
-                <button>Login</button>
+                <button>Ingresar</button>
 
                 <article class="redirect-lr">
-                    <a href="{{ route('login.index_register') }}">Are you new?</a>
+                    <a href="{{ route('login.index_register') }}">¿Eres nuevo?</a>
                 </article>
 
             </form>

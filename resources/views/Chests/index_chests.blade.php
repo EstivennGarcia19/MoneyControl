@@ -8,6 +8,7 @@ Chests
 <?php
 // Se hace la llamada a esta api para formatear la fecha mas abajo en este archivo
 use Carbon\Carbon;
+Carbon::setLocale('es');
 
 ?>
 
@@ -17,7 +18,7 @@ use Carbon\Carbon;
 
         <section id="section-tittle-chest">
             <div class="back" onclick="back()"><i class='bx bx-chevron-left'></i></div>
-            <div class="tittle"><span>Chests</span></div>
+            <div class="tittle"><span>Cofres</span></div>
             {{-- <div class="tittle"><span>Chests</span></div> --}}
             <div class="invisible">
                 <p>XD</p>
@@ -26,7 +27,8 @@ use Carbon\Carbon;
         </section>
 
         <article class="info-chests">
-            <p>In this section you can create chests to store money for a specific thing or to track savings.</p>
+            {{-- <p>In this section you can create chests to store money for a specific thing or to track savings.</p> --}}
+            <p>Crea cofres donde puedes guardar un monto especifico de dinero</p>
         </article>
 
 
@@ -35,7 +37,7 @@ use Carbon\Carbon;
             @if ($myChests->isEmpty())
 
                 <section class="there-nothing">
-                    <span class="text-danger">No chests created yet</span>
+                    <span class="text-danger">No has creado un cofre aún</span>
                     <img src="{{ asset('media/nothing3.png') }}" alt="">
                 </section>
             @else
@@ -59,7 +61,7 @@ use Carbon\Carbon;
                             </div>
     
                             <div class="date-created">
-                                <span>Created</span>
+                                <span>Creado</span>
                                 {{-- <span>01 Feb</span> --}}
                                 <span>{{ Carbon::parse($chest->date)->format('d M') }}
                                 </span>
@@ -80,7 +82,7 @@ use Carbon\Carbon;
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-between">
-                    <h1 class="modal-title fs-5 text-light" id="addMoreAmountLabel">New Chest</h1>
+                    <h1 class="modal-title fs-5 text-light" id="addMoreAmountLabel">Nuevo cofre</h1>
                     <button type="button" class="btn text-light" data-bs-dismiss="modal"><i class='bx bx-x'></i></button>
                 </div>
                 <div class="modal-body">
@@ -89,9 +91,9 @@ use Carbon\Carbon;
                             {{-- token para seguridad --}}
                             @csrf
                             {{-- token para seguridad --}}
-                            <input type="text" name="name" placeholder="Choose a name"> <br>
+                            <input type="text" name="name" placeholder="Elige un nombre"> <br>
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                            <button type="submit" form="form-chest">Create</button>
+                            <button type="submit" form="form-chest">Crear</button>
                         </form>
 
                     </div>

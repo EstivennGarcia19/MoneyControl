@@ -11,14 +11,16 @@
 
         <section id="section-tittle-profile">
             <div class="back" onclick="back()"><i class='bx bx-chevron-left'></i></div>
+            <div class="tittle text-center">
+                <h2>Editar Perfil</h2>
+            </div>
+            <p>x</p>
         </section>
-        <div class="tittle text-center">
-            <h2>Edit Profile</h2>
-        </div>
+        
 
         <article class="form-container">
 
-            <form id="register-form" action="{{ route('profile.update', $user) }}" method="POST">6
+            <form class="register-form" action="{{ route('profile.update', $user) }}" method="POST">6
                 @csrf
                 @method('PUT')
                 <article id="photo-profile">
@@ -30,7 +32,7 @@
                 <input type="text" name="name" placeholder="UserName" required value="{{ $user->name }}">
                 <input type="text" name="email" placeholder="Email" required value="{{ $user->email }}">
 
-                <button class="btn btn-success p-3 mb-3">Update</button>
+                <button class="btn btn-success p-3 mb-3">Actualizar</button>
             </form>
             {{-- Formulario para eliminar --}}
             <form class="d-flex flex-column" action="{{ route('user.destroy', $user) }}" method="POST"
@@ -38,7 +40,7 @@
                 @csrf
                 @method('DELETE')
                 <button form="form-delete-user" class="btn btn-danger p-3" onclick="return confirm('¿Are you sure bro?')"
-                    type="submit">Delete Account</button>
+                    type="submit">Eliminar cuenta</button>
             </form>
 
         </article>

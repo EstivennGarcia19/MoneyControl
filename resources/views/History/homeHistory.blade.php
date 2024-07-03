@@ -35,8 +35,8 @@ use Carbon\Carbon;
                             <i class='bx bx-receipt'></i>
                         </div>
                         <div class="info-details">
-                            <h2>Incomes</h2>
-                            <span>Your Incomes Registered</span>
+                            <h2>Ingresos</h2>
+                            <span>Tus ingresos registrados</span>
                         </div>
                     </div>
                     <div class="arrow">
@@ -54,8 +54,8 @@ use Carbon\Carbon;
                             <i class='bx bx-time-five'></i>
                         </div>
                         <div class="info-details">
-                            <h2>Forgotten day?</h2>
-                            <span>Register one day</span>
+                            <h2>Olvidé un dia</h2>
+                            <span>Registra un dia</span>
                         </div>
                     </div>
                     <div class="arrow">
@@ -69,22 +69,19 @@ use Carbon\Carbon;
 
         <section id="months-containers">
 
-            @foreach ($collection as $item)
-            <?php $copAmount = number_format($item->total, 0, ',', ','); ?>
-
-            
+            @foreach ($collection as $item)            
             <div class="month">
 
                 <a href="{{ route('history.daysExpenses', ['month'=>$item->month, 'date'=>$item->date]) }}">
 
                     <div class="tittle-month">
-                        <span>{{Carbon::parse($item->date)->formatLocalized('%B')}}</span>
+                        <span>{{formatMonthDate($item->date)}}</span>
                         
                     </div>
     
                     <div class="details-month">
-                        <span class="text-light">Total Bills</span>
-                        <h2>{{$copAmount}}</h2>
+                        <span class="text-light">Gastato este mes</span>
+                        <h2>{{formatCOP($item->total)}}</h2>
                     </div>
                 </a>
 

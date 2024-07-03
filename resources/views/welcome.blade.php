@@ -10,12 +10,12 @@
 
     <article class="information">
         <h2>Money Control</h2>
-        <p>Track your expenses and realize what you do with your money</p>
+        <p>Para que tengas en cuenta en que tanto gastas la plata</p>
     </article>
 
     <article class="btn-container">
-        <a href="{{ route('login.index_login') }}" class="active">Loguin</a>
-        <a href="{{ route('login.index_register') }}">Register</a>
+        <a href="{{ route('login.index_login') }}" class="active">Iniciar sesion</a>
+        <a href="{{ route('login.index_register') }}">Registrarse</a>
     </article>
 
 </div>

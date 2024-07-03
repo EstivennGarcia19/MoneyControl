@@ -14,11 +14,12 @@
 
                 <div class="cont-info-user">
                     <div class="photo-user">
-                        <img src="https://i.pinimg.com/originals/ef/e0/7d/efe07d9af104f338df556f48ba20ad62.png" alt="">
+                        <img src="https://i.pinimg.com/originals/ef/e0/7d/efe07d9af104f338df556f48ba20ad62.png"
+                            alt="">
                     </div>
                     <div class="name-user">
-                        <span><strong>Welcome!</strong></span><br>
-                        <span class="user-name">{{Auth::user()->name}}</span>
+                        <span><strong>Bienvenido!</strong></span><br>
+                        <span class="user-name">{{ Auth::user()->name }}</span>
                     </div>
                 </div>
                 <div class="settings">
@@ -31,7 +32,7 @@
             {{-- tergeta del total de la plata ome --}}
             <div class="all-my-money">
                 <article class="aBalance">
-                    <span>Aveilable Balance</span>
+                    <span>Dinero disponible</span>
                     <h2>${{ $currentMoney }} COP</h2>
                 </article>
 
@@ -40,13 +41,13 @@
                 <form id="incomes-form" class="incomes-form" action="{{ route('incomes.store') }}" method="POST">
                     {{-- token para seguridad --}}
                     @csrf
-                    {{-- token para seguridad --}}
-                    <input type="text" inputmode="numeric" name="amount" class="price" placeholder="¿How much bro?" required>
+                    <input type="text" inputmode="numeric" name="amount" class="price" placeholder="Cuanto hoy?"
+                        required>
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    <button class="btn-sent-income">Add amount</button>
+                    <button class="btn-sent-income">Agregar monto</button>
 
                 </form>
-                <a href="#" class="btn-expand" onclick="expandCard()">Add amount</a>
+                <a href="#" class="btn-expand" onclick="expandCard()">Agregar monto</a>
             </div>
 
             {{-- DAILY EXPENSES BOOTSTRAP --}}
@@ -56,7 +57,7 @@
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <div class="info">
-                                <span class="danger">Today:</span>
+                                <span class="danger">Hoy:</span>
                                 <span class="text-light">${{ $currentExpenses }}</span>
                                 <i class='bx bx-chevron-down'></i>
                             </div>
@@ -64,15 +65,16 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <h2>You have bought these things Today</h2>
+                            <h2>Haz comprado estas cosas hoy:</h2>
                             <ol>
                                 @foreach ($shoppingToday as $item)
-                                    <?php $copAmount = number_format($item->price, 0, ',', ','); ?>
+                                    <?php //$copAmount = number_format($item->price, 0, ',', ',');
+                                    ?>
                                     <li>
                                         <div class="name-price">
                                             <p>x</p>
                                             <span>{{ $item->name }}</span>
-                                            <span class="price">${{ $copAmount }}</span>
+                                            <span class="price">${{ formatCOP($item->price) }}</span>
                                         </div>
                                     </li>
                                 @endforeach
@@ -87,32 +89,30 @@
         {{-- registrar una compra --}}
         <section id="add-purchase">
             <div class="info-purchase">
-                <h2>Add Purchase</h2>
-                <p>¿What did you get today?</p>                
+                <h2>Añadir una compra</h2>
+                <p>¿Que compraste hoy?</p>
             </div>
 
-            <form id="this-form" action="{{ route('expenses.store') }}" method="POST">
+            {{-- action="{{ route('expenses.store') }}" --}}
+            <form id="this-form" action="{{ route('expenses.store')}}" method="POST" >
                 {{-- token para seguridad --}}
                 @csrf
-                {{-- token para seguridad --}}
-                <input type="text" name="name" id="name" placeholder="Full Name" required>                
-                <input type="text" inputmode="numeric" name="price" class="price" placeholder="Price" required>                
-                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                <input type="text" name="name" id="name" placeholder="Nombre" required>
+                <input type="text" inputmode="numeric" name="price" class="price" placeholder="Precio" required>
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 @if (Session::has('message'))
                     <div class="catch-result">
                         <span class="message-catched">{{ Session::get('message') }}</span>
                     </div>
                 @endif
 
-                {{-- <button>Add</button> --}}
             </form>
         </section>
     </div>
-    
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/formatCOP.js')}}"></script>
+    <script src="{{ asset('js/formatCOP.js') }}"></script>
     {{-- Esto es para que cuando salga el teclad el contenido se mueva hacia arriba y 
         no quede tapado por el teclado del celular --}}
     <script>

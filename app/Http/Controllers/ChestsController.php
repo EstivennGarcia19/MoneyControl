@@ -90,7 +90,7 @@ class ChestsController extends Controller
             // Asi que aqui se inserta lo que se Agrego, cuanto, cuando y que en cofre
             $stalker =  new StalkerChest;        
 
-            $stalker->action_per = 'Added';
+            $stalker->action_per = 'Añadido';
             $stalker->amount = $numeroSinComa;
             $stalker->chest_id = $info_chest->id;
             $stalker->created_at = Carbon::now();
@@ -114,19 +114,18 @@ class ChestsController extends Controller
         $info_chest->date = $request->date; 
 
         $info_chest->save(); 
-
         
          // En la tabla de StalkerChest, se llevaran los registros de Ingreso y egreso del cofre
         // Asi que aqui se inserta que se Retiro, cuanto, cuando y que cofre
         $stalker =  new StalkerChest;        
 
-        $stalker->action_per = 'Removed';
+        $stalker->action_per = 'Retirado';
         $stalker->amount = $numeroSinComa;
         $stalker->chest_id = $info_chest->id;
         $stalker->created_at = Carbon::now();
         $stalker->updated_at = Carbon::now();
         $stalker->save();
-
+      
         return redirect()->back();
         
     }
@@ -137,6 +136,8 @@ class ChestsController extends Controller
         $chest->delete();
         return redirect()->route('chests.index');
     }
+
+
     public function changeColor($chest, $color) {
 
         $chest = Chests::find($chest);

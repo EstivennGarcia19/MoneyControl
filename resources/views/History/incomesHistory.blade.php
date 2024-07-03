@@ -1,11 +1,6 @@
 @extends('Layouts.html')
 @extends('Layouts.nav.nav-bar')
 
-<?php
-use Carbon\Carbon;
-?>
-
-
 @section('principal-container')
     <section id="home-history">
 
@@ -13,7 +8,7 @@ use Carbon\Carbon;
         {{-- TITULO SECCION --}}
         <article id="section-tittle-history">
             <div class="back" onclick="back()"><i class='bx bx-chevron-left'></i></div>
-            <div class="tittle"><span>Incomes Registered</span></div>
+            <div class="tittle"><span>Ingresos registrados</span></div>
             <div class="invisible">
                 <p>p</p>
             </div>
@@ -24,12 +19,12 @@ use Carbon\Carbon;
         {{-- CONTENDERO --}}
         <section id="list-history">
 
-            <p>You've register these Incomes</p>
+            <p>Esos han sido tus ingresos</p>
 
 
             @if ($incomes->isEmpty())
                 <section class="there-nothing">
-                    <span class="text-danger">No incomes yet</span>
+                    <span class="text-danger">Aun no tienes ingresos</span>
                     <img src="{{ asset('media/nothing4.png') }}" alt="">
                 </section>
             @else
@@ -42,7 +37,8 @@ use Carbon\Carbon;
                                 <i class='bx bx-message-square-detail'></i>
                             </div>
                             <div class="date-state">
-                                <h3 class="text-light">{{ Carbon::parse($item->date)->formatLocalized('%A %d %B %Y') }}</h3>
+                                {{-- <h3 class="text-light">{{ Carbon::parse($item->date)->formatLocalized('%A %d %B %Y') }}</h3> --}}
+                                <h3 class="text-light">{{ formatFullDate($item->date) }}</h3>
                             </div>
 
                         </article>

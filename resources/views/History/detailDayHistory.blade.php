@@ -2,8 +2,8 @@
 @extends('Layouts.nav.nav-bar')
 
 <?php
-    use Carbon\Carbon;
     $date_day = $date_tittle->first()->date;
+
 ?>
 
 
@@ -12,27 +12,27 @@
         {{-- TITULO SECCION --}}
         <article id="section-tittle-history">
             <div class="back" onclick="back()"><i class='bx bx-chevron-left'></i></div>
-            <div class="tittle"><span>{{ Carbon::parse($date_day)->formatLocalized('%B %d') }}</span></div>
+            <div class="tittle"><span>{{ formatDate($date_day) }}</span></div>
 
             <div class="invisible">
-                <p>p</p>
+                <p>p</p>    
             </div>
         </article>
 
         <section id="days-container">
 
             <article class="info">
-                <p>Hello, This Day Yoy buy this things</p>
+                <p>Hola, Este dia compraste esto:</p>
             </article>
 
             <ol>
-                @foreach ($collection as $item)
+                @foreach ($detail_days as $item)
                     <?php $copAmount = number_format($item->price, 0, ',', ','); ?>
                     <li>
                         <article class="things-purshased">
                             <p>x</p>
                             <span>{{ $item->name }}</span>
-                            <span>${{ $copAmount }}</span>
+                            <span>${{ formatCOP($item->price) }}</span>
                         </article>
 
                     </li>
@@ -50,7 +50,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between">
-                        <h1 class="modal-title fs-5" id="removeAmount">You forgot something?</h1>
+                        <h1 class="modal-title fs-5" id="removeAmount">¿Que olvidaste?</h1>
                         <button type="button" class="btn text-light" data-bs-dismiss="modal"><i
                                 class='bx bx-x'></i></button>
                     </div>
@@ -64,13 +64,13 @@
                                 <article>
                                     <div>
                                         <label for="name"><i class='bx bx-calendar-edit'></i></label>
-                                        <input type="text" placeholder="Name" id="input_add_amount" name="name"
+                                        <input type="text" placeholder="Nombre" id="input_add_amount" name="name"
                                             value="">
                                     </div>
                                     <div>
                                         <label for="price"><i class='bx bx-wallet'></i></label>
                                         
-                                        <input type="text" placeholder="Amount" inputmode="numeric" class="price" id="input_add_amount" name="price">
+                                        <input type="text" placeholder="Cuanto" inputmode="numeric" class="price" id="input_add_amount" name="price">
                                     </div>
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="date" value="{{ $date_day }}">
