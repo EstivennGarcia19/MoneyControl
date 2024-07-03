@@ -26,6 +26,7 @@ class HistoryController extends Controller
             ->select(DB::raw('MONTH(date) as month'), DB::raw('SUM(price) as total'),  DB::raw('MAX(date) as date'))
             ->where('user_id', Auth::user()->id)
             ->groupBy(DB::raw('MONTH(date)'), 'user_id')
+            ->orderBy("id", "desc")
             ->get();
 
 
