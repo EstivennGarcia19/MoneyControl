@@ -83,7 +83,7 @@ class HistoryController extends Controller
         $purshase->price = $numeroSinComa;
         $purshase->date = $request->date;
         $purshase->user_id = $request->user_id;
-        $purshase->save();  
+        $purshase->save();
 
         return redirect()->back();
     }
@@ -115,23 +115,42 @@ class HistoryController extends Controller
         $new_day->date = $request->date;
         $new_day->user_id = $request->user_id;
         $new_day->save();
-        
-        return redirect()->route("histoty.index");
 
+        return redirect()->route("histoty.index");
     }
 
 
 
-    public function categoriesHome() {
+    public function categoriesHome()
+    {
+
+        // $categories = DB::table('categories as c')
+        // ->leftJoin('expenses as e', 'c.id', '=', 'e.category_id')
+        // ->select('c.id', 'c.name', DB::raw('SUM(e.price) as total'))
+        // ->groupBy('c.id', 'c.name')
+        // ->orderBy('total', 'desc')        
+        // ->get();
 
         $categories = DB::table('categories as c')
-        ->leftJoin('expenses as e', 'c.id', '=', 'e.category_id')
-        ->select('c.id', 'c.name', DB::raw('SUM(e.price) as total'))
-        ->groupBy('c.id', 'c.name')
-        ->orderBy('total', 'desc')
-        ->get();
-        
+            ->leftJoin('expenses as e', function ($join) {
+                $join->on('c.id', '=', 'e.category_id')
+                    ->where('e.user_id', '=', Auth::user()->id);
+            })
+            ->select('c.id', 'c.name', DB::raw('SUM(e.price) as total'))
+            ->groupBy('c.id', 'c.name')
+            ->orderBy('total', 'desc')
+            ->get();
+
 
         return view("History.categoriesHome", compact('categories'));
+    }
+
+
+
+    public function detailCategory($id) {
+
+        $detail = Expenses::where('category_id', $id)->orderBy('date', 'desc')->get();        
+
+        return view('History.categoryDetail', compact('detail'));
     }
 }

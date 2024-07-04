@@ -2256,6 +2256,7 @@ body {
 /* =========================================================================================== */
 /* =========================================================================================== */
 /* =========================================================================================== */
+
 #categoriesHome {
     width: 100%;
     padding: 0 30px;
@@ -2314,6 +2315,7 @@ body {
     border-radius: 15px;
     padding: 0 11px;
     color: #fff;
+    text-decoration: none;    
 }
 
 #cont-categories .category .icon {
@@ -2368,9 +2370,110 @@ body {
     font-weight: 700;
 }
 
-
-
 /* ============================================Fin============================================ */
+
+
+
+
+
+
+
+
+/* =========================================================================================== */
+/* =========================================================================================== */
+/* =========================================================================================== */
+/* ======================================Categorias Detalle====================================== */
+/* =========================================================================================== */
+/* =========================================================================================== */
+/* =========================================================================================== */
+/* =========================================================================================== */
+
+
+
+
+#categoryDetail {
+    width: 100%;
+    padding: 0 30px;
+    padding-bottom: 100px;
+    background-color: var(--bg-dark);
+    height: 100vh;
+    overflow: auto;
+}
+#categoryDetail .title-section {
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#categoryDetail .title-section .back {    
+    width: 33px;
+    height: 33px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    border: 1px solid #2c2e41;
+}
+
+#categoryDetail .title-section .back i {
+    /* color: var(--primary-color); */
+    color: #fff;    
+}
+
+#categoryDetail .title-section span {
+    font-weight: 700;
+    color: #fff;
+    font-size: 23px;
+}
+
+#categoryDetail .title-section span:last-child {
+    user-select: none;
+    color: transparent;
+}
+
+#cont-details {
+    width: 100%;   
+    color: #fff; 
+}
+
+#cont-details .detail {
+    width: 100%;
+    text-align: center;
+    border: 2px solid #ea80fc;
+    border-radius: 12px;
+    margin-bottom: 60px;
+    padding: 10px 15px;
+    position: relative;
+       
+}
+#cont-details .detail .date {
+    position: absolute;
+    top: -13px;
+    left: 15%;
+    right: 15%;
+    background-color: var(--bg-dark);
+}
+
+#cont-details .detail .purchase-info {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+    padding: 0 30px;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* -----------------------------KeyFrames------------------------------- */
 @keyframes cursorBlink {

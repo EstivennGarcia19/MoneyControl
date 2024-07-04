@@ -64,6 +64,7 @@ Route::controller(HistoryController::class)->group(function () {
     Route::get('history/addForgottenDay/', 'forgottenDay')->middleware('auth')->name('history.forgottenDay');
     Route::post('history/addForgottenDay/', 'addforgottenDay')->middleware('auth')->name('history.addforgottenDay');
     Route::get('history/categories/', 'categoriesHome')->middleware('auth')->name('history.categoriesHome');
+    Route::get('history/categories/detail/{id}', 'detailCategory')->middleware('auth')->name('hist.detailCategory');
 }); 
 
 
