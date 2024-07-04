@@ -114,4 +114,19 @@ class HistoryController extends Controller
         return redirect()->route("histoty.index");
 
     }
+
+
+
+    public function categoriesHome() {
+
+        $categories = DB::table('categories as c')
+        ->leftJoin('expenses as e', 'c.id', '=', 'e.category_id')
+        ->select('c.id', 'c.name', DB::raw('SUM(e.price) as total'))
+        ->groupBy('c.id', 'c.name')
+        ->orderBy('total', 'desc')
+        ->get();
+        
+
+        return view("History.categoriesHome", compact('categories'));
+    }
 }

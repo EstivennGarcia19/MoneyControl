@@ -62,7 +62,7 @@ Route::controller(HistoryController::class)->group(function () {
     Route::get('history/day/{day}', 'detailDay')->middleware('auth')->name('history.detailDay');
     Route::put('history/newAmount/', 'store')->middleware('auth')->name('history.store');
     Route::get('history/addForgottenDay/', 'forgottenDay')->middleware('auth')->name('history.forgottenDay');
-    Route::post('history/addForgottenDay/', 'addforgottenDay')->middleware('auth')->name('history.addforgottenDay');
+    Route::get('/history/categories/', 'categoriesHome')->middleware('auth')->name('history.categoriesHome');
 }); 
 
 

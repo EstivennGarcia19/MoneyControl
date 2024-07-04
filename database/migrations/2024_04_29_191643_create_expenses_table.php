@@ -19,7 +19,12 @@ return new class extends Migration
             $table->date('date'); 
             $table->unsignedBigInteger('user_id');                        
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
-            $table->timestamps();            
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');           
+            $table->timestamps(); 
+
+            // $table->unsignedBigInteger('chest_id');
+            // $table->foreign('chest_id')->references('id')->on('chests')->onDelete('cascade');
             
             
             

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('action_per');
             $table->integer('amount')->nullable();
             $table->unsignedBigInteger('chest_id');
-            $table->foreign('chest_id')->references('id')->on('chests')->onDelete('cascade');;
+            $table->foreign('chest_id')->references('id')->on('chests')->onDelete('cascade');
             $table->timestamps();  
         });
     }

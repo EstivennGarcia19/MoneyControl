@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Expenses;
 use App\Models\Incomes;
 use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use function PHPUnit\Framework\isEmpty;
 
 class ExpensesController extends Controller
 {
@@ -48,30 +51,56 @@ class ExpensesController extends Controller
     }
 
 
+    // public function store(Request $request) {
+
+    //     $request->validate([
+
+    //         'name' => 'required',
+    //         'price' => 'required'
+    //     ]);
+
+    //     $numeroConComa = $request->price;
+    //     $numeroSinComa = str_replace(',', '', $numeroConComa);
+
+    //     $purshase = new Expenses();
+
+    //     $purshase->name = $request->name;
+    //     $purshase->price = $numeroSinComa;                
+    //     $purshase->date = Carbon::now();
+    //     $purshase->user_id = $request->user_id;
+
+    //     $purshase->save();      
+
+    //     return redirect()->route('home.index')->with('message', 'Compra añadida!');                
+
+    // }
+
+
     public function store(Request $request) {
 
-
         $request->validate([
-
             'name' => 'required',
             'price' => 'required'
         ]);
-
+    
         $numeroConComa = $request->price;
         $numeroSinComa = str_replace(',', '', $numeroConComa);
-
-        $purshase = new Expenses();
-
-        $purshase->name = $request->name;
-        $purshase->price = $numeroSinComa;                
-        $purshase->date = Carbon::now();
-        $purshase->user_id = $request->user_id;
-
-        $purshase->save();      
-
-        return redirect()->route('home.index')->with('message', 'Compra añadida!');                
-
+    
+        $purch = new Expenses();
+        $purch->name = $request->name;
+        $purch->price = $numeroSinComa;                
+        $purch->category_id = $request->category;                
+        $purch->date = Carbon::now();
+        $purch->user_id = $request->user_id;
+        $purch->save();                                
+        
+        if ($request->ajax()) {
+            return response()->json(['message' => 'Compra añadida!']);
+        }
+    
+        return redirect()->route('home.index')->with('message', 'Compra añadida!');
     }
+    
 
 
     

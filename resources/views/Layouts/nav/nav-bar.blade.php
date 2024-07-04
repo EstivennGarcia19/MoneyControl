@@ -6,7 +6,7 @@
             <a href="{{ route('home.index') }}">
                 <div class="icon-button">
                     <i class='bx bx-cricket-ball'></i>
-                    <span>Home</span>
+                    {{-- <span>Home</span> --}}
                 </div>
             </a>
         </li>
@@ -14,7 +14,7 @@
             <a href="{{ route('histoty.index') }}">
                 <div class="icon-button">
                     <i class='bx bx-paper-plane'></i>
-                    <span>Historial</span>
+                    {{-- <span>Historial</span> --}}
                 </div>
             </a>
         </li>
@@ -26,18 +26,17 @@
             <a href="{{ route('chests.index') }}">
                 <div class="icon-button">
                     <i class='bx bx-credit-card'></i>
-                    <span>Cofres</span>
+                    {{-- <span>Cofres</span> --}}
                 </div>
             </a>
         </li>
-        <li class="link-nav">
-            {{-- <a href="{{ route('profile.show', []) }}"> --}}
+        {{-- <li class="link-nav">
             <a href="{{ route('profile.show', ['id'=>Auth::user()->id]) }}">
                 <div class="icon-button">
                     <i class='bx bx-user'></i>
                     <span>Perfil</span>
                 </div>
             </a>
-        </li>
+        </li> --}}
     </ul>
 </nav>

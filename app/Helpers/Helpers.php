@@ -13,7 +13,7 @@ function formatFullDate($date) {
     
     Carbon::setLocale('es');
     
-    $lowerCase = Carbon::parse($date)->isoFormat('dddd, DD MMM YYYY HH:mm');
+    $lowerCase = Carbon::parse($date)->isoFormat('ddd DD MMM YYYY');
 
     return ucfirst($lowerCase);
 
@@ -39,6 +39,26 @@ function formatDate($date) {
 
     return ucfirst($lowerCase);
 
+}
+
+
+
+function getIconClass($name) {
+
+    $icons = [
+        'Alimento' => 'bxs-baguette',
+        'Salud y belleza' => 'bxs-spray-can',
+        'Tecnologia' => 'bx-joystick-alt',
+        'Negocios y apuestas' => 'bxl-bitcoin',
+        'Hogar' => 'bxs-home-smile',
+        'Transporte' => 'bxs-bus',
+        'Facturas' => 'bxs-receipt',
+        'Mascotas' => 'bxs-dog',
+        'Ropa y accesorios' => 'bxs-shopping-bag',
+        'Otros' => 'bx-menu',
+    ];
+
+    return $icons[$name] ?? 'bx-category';
 }
 
 

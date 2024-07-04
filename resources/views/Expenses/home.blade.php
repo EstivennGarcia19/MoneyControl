@@ -14,8 +14,10 @@
 
                 <div class="cont-info-user">
                     <div class="photo-user">
-                        <img src="https://i.pinimg.com/originals/ef/e0/7d/efe07d9af104f338df556f48ba20ad62.png"
-                            alt="">
+                        <a href="{{ route('profile.show', ['id'=>Auth::user()->id]) }}">
+                            <img src="https://i.pinimg.com/originals/ef/e0/7d/efe07d9af104f338df556f48ba20ad62.png"
+                            alt="Foto de usuario"> 
+                        </a>
                     </div>
                     <div class="name-user">
                         <span><strong>Bienvenido!</strong></span><br>
@@ -65,7 +67,7 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <h2>Haz comprado estas cosas hoy:</h2>
+                            <h2>Hoy compraste:</h2>
                             <ol>
                                 @foreach ($shoppingToday as $item)
                                     <?php //$copAmount = number_format($item->price, 0, ',', ',');
@@ -89,47 +91,127 @@
         {{-- registrar una compra --}}
         <section id="add-purchase">
             <div class="info-purchase">
-                <h2>Añadir una compra</h2>
-                <p>¿Que compraste hoy?</p>
+                <h2>Añade una compra</h2>
             </div>
 
-            {{-- action="{{ route('expenses.store') }}" --}}
-            <form id="this-form" action="{{ route('expenses.store')}}" method="POST" >
-                {{-- token para seguridad --}}
+            {{-- <form id="expense-form" action="{{ route('expenses.store')}}" method="POST" > --}}
+            <form id="expense-form" method="POST">
                 @csrf
-                <input type="text" name="name" id="name" placeholder="Nombre" required>
+                <input type="text" name="name" id="name" placeholder="Nombre">
                 <input type="text" inputmode="numeric" name="price" class="price" placeholder="Precio" required>
+                <input type="hidden" name="category" id="category">
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                @if (Session::has('message'))
-                    <div class="catch-result">
-                        <span class="message-catched">{{ Session::get('message') }}</span>
-                    </div>
-                @endif
-
+                <div id="message"></div>
             </form>
+
         </section>
+
+
+      
+        {{-- Modal de categorias --}}
+        <div id="categoryModal">
+            <div>
+                <h2>Selecciona una Categoría</h2>
+                <ul class="categories">
+                    <li data-category=1>
+                        <div class="icon">
+                            <i class='bx bxs-baguette'></i>
+                        </div>
+                    </li>
+                    <li data-category=2>
+                        <div class="icon">
+                            <i class='bx bxs-spray-can'></i>
+                        </div>
+                    </li>
+                    <li data-category=3>
+                        <div class="icon">
+                            <i class='bx bx-joystick-alt'></i>
+                        </div>
+                    </li>
+                    <li data-category=4>
+                        <div class="icon">
+                            <i class='bx bxl-bitcoin'></i>
+                        </div>
+                    </li>
+                    <li data-category=5>
+                        <div class="icon">
+                            <i class='bx bxs-home-smile'></i>
+                        </div>
+                    </li>
+                    <li data-category=6>
+                        <div class="icon">
+                            <i class='bx bxs-bus' ></i>
+                        </div>
+                    </li>
+                    <li data-category=7>
+                        <div class="icon">
+                            <i class='bx bxs-receipt' ></i>
+                        </div>
+                    </li>
+                    <li data-category=8>
+                        <div class="icon">
+                            <i class='bx bxs-dog'></i>
+                        </div>
+                    </li>
+                    <li data-category=9>
+                        <div class="icon">
+                            <i class='bx bxs-shopping-bag'></i>
+                        </div>
+                    </li>
+                    <li data-category=10>
+                        <div class="icon">
+                            <i class='bx bx-menu'></i>
+                        </div>
+                    </li>
+                </ul>
+                {{-- <button id="closeModal">Cerrar</button> --}}
+            </div>
+        </div>
     </div>
 @endsection
 
 @push('scripts')
+    {{-- Formatear el dinero (INT) a cop EN TIEMPO REAL --}}
     <script src="{{ asset('js/formatCOP.js') }}"></script>
-    {{-- Esto es para que cuando salga el teclad el contenido se mueva hacia arriba y 
-        no quede tapado por el teclado del celular --}}
+    {{-- Mover contenido cuando sale el teclado --}}
+    <script src="{{ asset('js/moveContentToSeeBetter.js') }}"></script>
+
+    {{-- Ajax para insertar --}}
     <script>
         $(document).ready(function() {
-            // Agrega un controlador de eventos focus a todos los campos de entrada
-            $('input, textarea').focus(function() {
-                // Verifica si el formulario actual tiene un cierto id
-                if ($(this).closest('form').attr('id') !== 'incomes-form') {
-                    // Si es un dispositivo móvil, desplaza la página hacia arriba
-                    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator
-                            .userAgent)) {
-                        $('html, body').animate({
-                            scrollTop: $(this).offset().top -
-                                20 // Ajusta la posición final del desplazamiento
-                        }, 200); // Duración de la animación en milisegundos
+            $('#expense-form').on('submit', function(e) {
+                e.preventDefault(); // Evita el envío tradicional del formulario
+                $('#categoryModal').css('display', 'flex'); // Muestra el modal
+            });
+
+            $('#categoryModal').on('click', 'li', function() {
+                var category = $(this).data('category');
+                $('#category').val(category); // Setea la categoría seleccionada en el campo oculto
+                $('#categoryModal').hide(); // Oculta el modal
+
+                // Envía el formulario automáticamente
+                $.ajax({
+                    url: '{{ route('expenses.store') }}',
+                    method: 'POST',
+                    data: $('#expense-form').serialize(), // Serializa los datos del formulario
+                    success: function(response) {
+                        $('#message').html('<span class="message-catched">' + response.message +
+                            '</span>');
+                        $('#expense-form')[0].reset(); // Resetea el formulario
+                    },
+                    error: function(xhr) {
+                        var errors = xhr.responseJSON.errors;
+                        var errorMessage = '';
+                        $.each(errors, function(key, value) {
+                            errorMessage += '<span>' + value + '</span><br>';
+                        });
+                        $('#message').html(errorMessage);
                     }
-                }
+                });
+            });
+
+            $('#closeModal').on('click', function() {
+                $('#categoryModal').hide(); // Cierra el modal
             });
         });
     </script>
