@@ -13,7 +13,6 @@
         <section id="section-tittle-chest">
             <div class="tittle">
                 <div class="back" onclick="back()"> <i class='bx bx-chevron-left'></i></div>
-
             </div>
             <div class="tittle">
                 <div><span>{{ $info_chest->name }}</span></div>
@@ -26,7 +25,8 @@
                         @method('DELETE')
                         <button href="#"><i class='bx bx-trash'></i><span>Borrar</span></button>
                     </form>
-                    <a href="#"><i class='bx bx-brush-alt'></i><span>Editar</span></a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#selectColor"><i
+                            class='bx bx-brush-alt'></i><span>Editar</span></a>
                 </article>
             </div>
 
@@ -39,8 +39,6 @@
                 <span>Dinero disponible</span>
                 <h2>${{ formatCOP($info_chest->amount) }}</h2>
             </div>
-
-
             <div class="options">
                 <div class="add-money" data-bs-toggle="modal" data-bs-target="#addAmount">
                     <i class='bx bx-plus'></i>
@@ -61,7 +59,6 @@
 
             <section id="my-chests">
                 @foreach ($stalker as $joe)
-
                     <div class="history">
                         <article class="info">
 
@@ -125,7 +122,7 @@
                                             alt=""></label>
                                     <input type="hidden" placeholder="Name" name="name"
                                         value="{{ $info_chest->name }}">
-                                    <input type="text" placeholder="Amount" inputmode="numeric" class="price"
+                                    <input type="text" placeholder="Cantidad" inputmode="numeric" class="price"
                                         id="input_add_amount" name="amount" value="">
                                     <input type="hidden" placeholder="Date" name="date"
                                         value="{{ $info_chest->date }}">
@@ -133,15 +130,8 @@
 
                                 <button><i class='bx bx-plus'></i></button>
                             </form>
-
-
-
-
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -179,9 +169,49 @@
                 </div>
             </div>
         </div>
+
+        {{-- Modal cambio de colores --}}
+        <div class="modal fade" id="selectColor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="selectColorLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between">
+                        <h1 class="modal-title fs-5" id="selectColor">Select a color</h1>
+                        <button type="button" class="btn text-light" data-bs-dismiss="modal"><i
+                                class='bx bx-x'></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="my-content-modal">
+                            <form
+                                action="{{ route('chest.changeColor', ['chest' => $info_chest->id, 'color' => 'replace']) }}"
+                                id="form-change-cc" method="POST">
+                                @csrf
+                                <div class="colors-chests">
+                                    <div class="color-circle" style="background: #ff4b59"
+                                        onclick="changeColor('ff4b59')"></div>
+                                    <div class="color-circle" style="background: #1896fe"
+                                        onclick="changeColor('1896fe')"></div>
+                                    <div class="color-circle" style="background: #704df9"
+                                        onclick="changeColor('704df9')"></div>
+                                    <div class="color-circle" style="background: #ff5d2a"
+                                        onclick="changeColor('ff5d2a')"></div>
+                                    <div class="color-circle" style="background: #2bc2ff"
+                                        onclick="changeColor('2bc2ff')"></div>
+                                    <div class="color-circle" style="background: #000000"
+                                        onclick="changeColor('000000')"></div>
+                                </div>
+                            </form>
+                            <button class="mt-5" form="form-change-cc">Change</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
 
 @push('scripts')
     <script src="{{ asset('js/formatCOP.js') }}"></script>
+    <script src="{{ asset('js/changeColorChest.js') }}"></script>
+    
 @endpush

@@ -29,7 +29,8 @@ use Carbon\Carbon;
 
             <p>Si olvidaste anotar un gasto aqui puedes seleccionar el dia y anotarlo facilmente</p>
 
-            <form id="forgotten-day" action="{{ route('history.addforgottenDay') }}" method="POST">
+            {{-- <form id="forgotten-day" action="{{ route('history.addforgottenDay') }}" method="POST"> --}}
+            <form id="forgotten-day" action="#" method="POST">
                 {{-- token para seguridad --}}
                 @csrf
                 {{-- token para seguridad --}}

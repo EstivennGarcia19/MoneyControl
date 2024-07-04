@@ -96,6 +96,11 @@ class HistoryController extends Controller
 
         return view('History.addDayForgottenHistory');
     }
+    public function sharol()
+    {
+
+        return view('History.addDayForgottenHistory');
+    }
 
     public function addforgottenDay(Request $request)
     {

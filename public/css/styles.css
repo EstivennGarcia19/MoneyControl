@@ -2,9 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&family=Noto+Sans+TC:wght@100;200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&family=Rubik:ital,wght@0,300..900;1,300..900&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap');
 :root {
-    --orange-color:#f06a37;
-    /* --primary-color: #6c64f3;   */
-    /* --primary-color: #6b48f7;   */
+    --orange-color:#f06a37;    
     --primary-color: #3497db;  
     --green-color:#48c9b0;
     --red-color:#e74c3c;    
@@ -29,12 +27,6 @@
     --color-red-plantilla: #ff3b5e;
     --color-yellow-plantilla: #ffe01d;
 }
-
-
-
-
-
-
 
 * {
     margin: 0 ;

@@ -89,10 +89,10 @@ use Carbon\Carbon;
 
             <article class="items">
                 <a href="{{ route('history.forgottenDay') }}">
-                    <article class="item">
+                    <article class="item item-2">
                         <div class="info">
                             <div class="icon-container">
-                                <i class='bx bx-ghost'></i>
+                                <i class='bx bx-time-five'></i>
                             </div>
                             <div class="info-details">
                                 <h2>Olvidé un dia</h2>
@@ -103,18 +103,9 @@ use Carbon\Carbon;
                             <i class='bx bx-chevron-right'></i>
                         </div>
                     </article>
-                </a>
+                </a> 
             </article>
+
         </section>
-
-
-
-
-
-
     </section>
 @endsection
-
-@push('scripts')
-    <script></script>
-@endpush
