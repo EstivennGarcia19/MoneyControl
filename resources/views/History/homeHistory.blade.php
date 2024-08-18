@@ -1,5 +1,8 @@
 @extends('Layouts.html')
 @extends('Layouts.nav.nav-bar')
+@section('tittle-head')
+    Historial
+@endsection
 
 <?php
 // Se hace la llamada a esta api para formatear la fecha mas abajo en este archivo

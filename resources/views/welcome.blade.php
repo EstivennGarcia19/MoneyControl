@@ -1,4 +1,7 @@
 @extends('Layouts.html')
+@section('tittle-head')
+    Money Control
+@endsection
 
 @section('principal-container')
 

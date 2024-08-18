@@ -1,6 +1,8 @@
 @extends('Layouts.html')
 @extends('Layouts.nav.nav-bar')
-
+@section('tittle-head')
+    Categorias de compras
+@endsection
 
 @section('principal-container')
     <section id="categoriesHome">

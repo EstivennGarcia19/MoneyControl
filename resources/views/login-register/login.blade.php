@@ -2,8 +2,6 @@
 @section('tittle-head')
     Register
 @endsection
-
-
 @section('principal-container')
     <section id="register">
         

@@ -1,5 +1,8 @@
 @extends('Layouts.html')
 @extends('Layouts.nav.nav-bar')
+@section('tittle-head')
+    Gastos diarios
+@endsection
 
 <?php 
     use Carbon\Carbon;

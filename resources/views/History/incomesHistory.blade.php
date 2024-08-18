@@ -1,5 +1,8 @@
 @extends('Layouts.html')
 @extends('Layouts.nav.nav-bar')
+@section('tittle-head')
+    Ingresos
+@endsection
 
 @section('principal-container')
     <section id="home-history">

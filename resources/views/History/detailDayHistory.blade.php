@@ -1,5 +1,8 @@
 @extends('Layouts.html')
 @extends('Layouts.nav.nav-bar')
+@section('tittle-head')
+    Detalle de compra
+@endsection
 
 <?php
     $date_day = $date_tittle->first()->date;

@@ -1,4 +1,7 @@
 @extends('Layouts.html')
+@section('tittle-head')
+    Chao
+@endsection
 
 
 @section('principal-container')
