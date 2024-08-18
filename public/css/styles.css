@@ -1306,9 +1306,10 @@ body {
 #forgotAdd {
     position: fixed;
     color: #fff;
-    bottom: 20px;
-    right: 36px;
-    /* bottom: 36px; */
+    bottom: 16%;
+    right: 50px;
+    /* bottom: 20px; */
+    /* right: 36px; */
     padding: 9px;
     background: var(--primary-color);
     font-size: 34px;
@@ -1328,8 +1329,8 @@ body {
 #home-history {      
     position: relative; 
     width: 100%;
-    height: 100%;
-    /* height: calc(100% - 95px); */
+    /* height: 100%; */
+    height: calc(100% - 95px);
     background: var(--bg-dark);
     /* background-color: #fff; */
     text-align: center;
@@ -1337,7 +1338,8 @@ body {
     /* padding: 30px 20px; */
     /* padding: 0 20px 119px 20px; */
     padding: 0 35px;
-    padding-bottom: 130px;   
+    /* padding-bottom: 130px;    */
+    padding-bottom: 25px;
 }
 /* ============================================================================================= */
 /* ============================================================================================= */
@@ -1421,7 +1423,7 @@ body {
 }
 
 #categoryModal .categories li .icon {
-    font-size: 60px;
+    font-size: 49px;
     color: #000;
 }
 
@@ -1538,9 +1540,7 @@ body {
     /* display: flex; */
      color: red;
 }
-#container-items .items .arrow {
-    /* display: none; */
-}
+
 
 #container-items .items:nth-child(1) .item .icon-container i,
 #container-items .items:nth-child(1) .item .arrow i {color: #3497db;}
@@ -1747,9 +1747,7 @@ body {
     
 }
 
-#forgotAdd {
-    position: absolute;
-}
+
 
 
 /* -------------------------------------------Days------------------------------------------- */
@@ -1803,11 +1801,21 @@ body {
     
 }
 
+#addMoreAmount .modal-content form .categories_options {
+    width: 240px;
+    padding: 10px 20px;
+    background-color: var(--bg-dark-light);
+    border: 0;
+    outline: none;
+    /* border-bottom: 1px solid #fff; */
+    color: #fff;
+}
+
 #addMoreAmount .modal-content form article {
+    width: 80%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: center;    
 }
 
 #addMoreAmount .modal-content form article div {
@@ -2324,8 +2332,17 @@ body {
     gap: 10px;
 }
 
+#cont-categories .category .cont-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
 #cont-categories .category .icon i {
-    font-size: 40px;
+    font-size: 35px;
     padding: 10px;
     border-radius: 100%;
     color: #000;
@@ -2336,34 +2353,34 @@ body {
 
 /* colores de la categoria */
 /* #cont-categories .category:nth-child(1) {border-color: #2fcc71;} */
-#cont-categories .c-1 .icon i {background-color: #2fcc71;}
+#cont-categories .c-1 .cont-icon {background-color: #2fcc71;}
 
 /* #cont-categories .category:nth-child(2) {border-color: #ea80fc;} */
-#cont-categories .c-2 .icon i {background-color: #ea80fc;}
+#cont-categories .c-2 .cont-icon {background-color: #ea80fc;}
 
 /* #cont-categories .category:nth-child(3) {border-color: #78c9d0;} */
-#cont-categories .c-3 .icon i {background-color: #78c9d0;}
+#cont-categories .c-3 .cont-icon {background-color: #78c9d0;}
 
 /* #cont-categories .category:nth-child(4) {border-color: #EFBA34;} */
-#cont-categories .c-4 .icon i {background-color: #EFBA34;}
+#cont-categories .c-4 .cont-icon {background-color: #EFBA34;}
 
 /* #cont-categories .category:nth-child(5) {border-color: #f05455;} */
-#cont-categories .c-5 .icon i {background-color: #f05455;}
+#cont-categories .c-5 .cont-icon {background-color: #f05455;}
 
 /* #cont-categories .category:nth-child(6)  {border-color: #ecdf5a;} */
-#cont-categories .c-6 .icon i {background-color: #ecdf5a;}
+#cont-categories .c-6 .cont-icon {background-color: #ecdf5a;}
 
 /* #cont-categories .category:nth-child(7)  {border-color: #C327DB;} */
-#cont-categories .c-7 .icon i {background-color: #C327DB;}
+#cont-categories .c-7 .cont-icon {background-color: #C327DB;}
 
 /* #cont-categories .category:nth-child(8) {border-color: #28ac60;} */
-#cont-categories .c-8 .icon i {background-color: #28ac60;}
+#cont-categories .c-8 .cont-icon {background-color: #28ac60;}
 
 /* #cont-categories .category:nth-child(9) {border-color: #3497db;} */
-#cont-categories .c-9 .icon i {background-color: #3497db;}
+#cont-categories .c-9 .cont-icon {background-color: #3497db;}
 
 /* #cont-categories .category:nth-child(10) {border-color: #ebf1f1;} */
-#cont-categories .c-10 .icon i {background-color: #ebf1f1;}
+#cont-categories .c-10 .cont-icon {background-color: #ebf1f1;}
 
 #cont-categories .category .total-price span {
     /* font-size: 20px; */

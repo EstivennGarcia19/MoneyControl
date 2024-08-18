@@ -23,7 +23,7 @@
                     <form action="{{ route('chests.destroy', ['chest' => $info_chest->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button href="#"><i class='bx bx-trash'></i><span>Borrar</span></button>
+                        <button onclick="return confirm('Estas seguro que quieres borrar este cofre?')" ><i class='bx bx-trash'></i><span>Borrar</span></button>
                     </form>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#selectColor"><i
                             class='bx bx-brush-alt'></i><span>Editar</span></a>
@@ -188,17 +188,74 @@
                                 @csrf
                                 <div class="colors-chests">
                                     <div class="color-circle" style="background: #ff4b59"
-                                        onclick="changeColor('ff4b59')"></div>
+                                        onclick="changeColor('ff4b59')">
+                                    </div>
                                     <div class="color-circle" style="background: #1896fe"
-                                        onclick="changeColor('1896fe')"></div>
+                                        onclick="changeColor('1896fe')">
+                                    </div>
                                     <div class="color-circle" style="background: #704df9"
-                                        onclick="changeColor('704df9')"></div>
+                                        onclick="changeColor('704df9')">
+                                    </div>
                                     <div class="color-circle" style="background: #ff5d2a"
-                                        onclick="changeColor('ff5d2a')"></div>
+                                        onclick="changeColor('ff5d2a')">
+                                    </div>
                                     <div class="color-circle" style="background: #2bc2ff"
-                                        onclick="changeColor('2bc2ff')"></div>
+                                        onclick="changeColor('2bc2ff')">
+                                    </div>
                                     <div class="color-circle" style="background: #000000"
-                                        onclick="changeColor('000000')"></div>
+                                        onclick="changeColor('000000')">
+                                    </div>
+
+                                    
+                                    <div class="color-circle" style="background: #e64d3d"
+                                        onclick="changeColor('e64d3d')">
+                                    </div>
+                                    <div class="color-circle" style="background: #f1c40f"
+                                        onclick="changeColor('f1c40f')">
+                                    </div>
+                                    <div class="color-circle" style="background: #e39703"
+                                        onclick="changeColor('e39703')">
+                                    </div>
+                                    <div class="color-circle" style="background: #ecdf5a"
+                                        onclick="changeColor('ecdf5a')">
+                                    </div>
+                                    <div class="color-circle" style="background: #d5c41e"
+                                        onclick="changeColor('d5c41e')">
+                                    </div>
+                                    <div class="color-circle" style="background: #2fcc71"
+                                        onclick="changeColor('2fcc71')">
+                                    </div>
+                                    <div class="color-circle" style="background: #27ab60"
+                                        onclick="changeColor('27ab60')">
+                                    </div>
+                                    <div class="color-circle" style="background: #78c9d0"
+                                        onclick="changeColor('78c9d0')">
+                                    </div>
+                                    <div class="color-circle" style="background: #379fa8"
+                                        onclick="changeColor('379fa8')">
+                                    </div>
+                                    <div class="color-circle" style="background: #344853"
+                                        onclick="changeColor('344853')">
+                                    </div>
+                                    <div class="color-circle" style="background: #22374c"
+                                        onclick="changeColor('22374c')">
+                                    </div>
+                                    <div class="color-circle" style="background: #1ba687"
+                                        onclick="changeColor('1ba687')">
+                                    </div>
+                                    <div class="color-circle" style="background: #ff414d"
+                                        onclick="changeColor('ff414d')">
+                                    </div>
+                                    <div class="color-circle" style="background: #f46a79"
+                                        onclick="changeColor('f46a79')">
+                                    </div>                                
+                                    <div class="color-circle" style="background: #6ec6ca"
+                                        onclick="changeColor('6ec6ca')">
+                                    </div>
+                                    
+                                    
+                                    
+                                    
                                 </div>
                             </form>
                             <button class="mt-5" form="form-change-cc">Change</button>
@@ -213,5 +270,4 @@
 @push('scripts')
     <script src="{{ asset('js/formatCOP.js') }}"></script>
     <script src="{{ asset('js/changeColorChest.js') }}"></script>
-    
 @endpush

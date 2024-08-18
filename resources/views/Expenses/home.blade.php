@@ -14,9 +14,9 @@
 
                 <div class="cont-info-user">
                     <div class="photo-user">
-                        <a href="{{ route('profile.show', ['id'=>Auth::user()->id]) }}">
+                        <a href="{{ route('profile.show', ['id' => Auth::user()->id]) }}">
                             <img src="https://i.pinimg.com/originals/ef/e0/7d/efe07d9af104f338df556f48ba20ad62.png"
-                            alt="Foto de usuario"> 
+                                alt="Foto de usuario">
                         </a>
                     </div>
                     <div class="name-user">
@@ -107,7 +107,7 @@
         </section>
 
 
-      
+
         {{-- Modal de categorias --}}
         <div id="categoryModal">
             <div>
@@ -115,52 +115,53 @@
                 <ul class="categories">
                     <li data-category=1>
                         <div class="icon">
-                            <i class='bx bxs-baguette'></i>
+                            <i class="fa-solid fa-burger"></i>
                         </div>
                     </li>
                     <li data-category=2>
                         <div class="icon">
-                            <i class='bx bxs-spray-can'></i>
+                            <i class="fa-solid fa-spray-can-sparkles"></i>
                         </div>
                     </li>
                     <li data-category=3>
                         <div class="icon">
-                            <i class='bx bx-joystick-alt'></i>
+                            <i class="fa-solid fa-gift"></i>
                         </div>
                     </li>
                     <li data-category=4>
                         <div class="icon">
-                            <i class='bx bxl-bitcoin'></i>
+                            <i class="fa-brands fa-bitcoin"></i>
                         </div>
                     </li>
                     <li data-category=5>
                         <div class="icon">
-                            <i class='bx bxs-home-smile'></i>
+                            <i class="fa-solid fa-toilet-paper"></i>
                         </div>
                     </li>
                     <li data-category=6>
                         <div class="icon">
-                            <i class='bx bxs-bus' ></i>
+                            <i class="fa-solid fa-bus"></i>
                         </div>
                     </li>
+                    
                     <li data-category=7>
                         <div class="icon">
-                            <i class='bx bxs-receipt' ></i>
+                            <i class="fa-solid fa-receipt"></i>
                         </div>
                     </li>
                     <li data-category=8>
                         <div class="icon">
-                            <i class='bx bxs-dog'></i>
+                            <i class="fa-solid fa-paw"></i>
                         </div>
                     </li>
                     <li data-category=9>
                         <div class="icon">
-                            <i class='bx bxs-shopping-bag'></i>
+                            <i class="fa-solid fa-bag-shopping"></i>
                         </div>
                     </li>
                     <li data-category=10>
                         <div class="icon">
-                            <i class='bx bx-menu'></i>
+                            <i class="fa-solid fa-ellipsis"></i>
                         </div>
                     </li>
                 </ul>

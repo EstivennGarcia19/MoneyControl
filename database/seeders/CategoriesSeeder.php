@@ -27,7 +27,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'id'=>3,
-                'name'=>'Tecnologia'   
+                'name'=>'Entretenimiento y caprichos'  
             ],
             [
                 'id'=>4,
@@ -35,7 +35,7 @@ class CategoriesSeeder extends Seeder
             ],
             [
                 'id'=>5,
-                'name'=>'Hogar'   
+                'name'=>'Limpieza y hogar'   
             ],
             [
                 'id'=>6,

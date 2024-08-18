@@ -82,6 +82,7 @@ class HistoryController extends Controller
         $purshase->name = $request->name;
         $purshase->price = $numeroSinComa;
         $purshase->date = $request->date;
+        $purshase->category_id = $request->category;
         $purshase->user_id = $request->user_id;
         $purshase->save();
 
@@ -112,11 +113,16 @@ class HistoryController extends Controller
 
         $new_day->name = $request->name;
         $new_day->price = $numeroSinComa;
-        $new_day->date = $request->date;
+        $new_day->date = $request->date;        
+        $new_day->category_id = $request->category;     
         $new_day->user_id = $request->user_id;
         $new_day->save();
 
-        return redirect()->route("histoty.index");
+        if ($request->ajax()) {
+            return response()->json(['message' => 'Compra añadida!']);
+        }
+    
+        // return redirect()->route('home.index')->with('message', 'Compra añadida!');
     }
 
 
@@ -149,7 +155,7 @@ class HistoryController extends Controller
 
     public function detailCategory($id) {
 
-        $detail = Expenses::where('category_id', $id)->orderBy('date', 'desc')->get();        
+        $detail = Expenses::where('category_id', $id)->where('user_id',Auth::user()->id)->orderBy('date', 'desc')->get();        
 
         return view('History.categoryDetail', compact('detail'));
     }

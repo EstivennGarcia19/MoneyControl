@@ -19,7 +19,9 @@
                 <a href="{{ route('hist.detailCategory', $category->id) }}" class="category c-{{ $category->id }}">
 
                     <div class="icon">
-                        <i class='bx {{ getIconClass($category->name) }}'></i>
+                        <article class="cont-icon">
+                            <i class='fa-solid {{ getIconClass($category->name) }}'></i>
+                        </article>
                         <span>{{ $category->name }}</span>
                     </div>
 

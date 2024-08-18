@@ -45,6 +45,8 @@
             <i class='bx bx-question-mark bx-tada'></i>
         </div>
 
+
+        {{-- Modal agregar compra olvidada --}}
         <div class="modal fade" id="addMoreAmount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="addMoreAmountLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -64,13 +66,26 @@
                                 <article>
                                     <div>
                                         <label for="name"><i class='bx bx-calendar-edit'></i></label>
-                                        <input type="text" placeholder="Nombre" id="input_add_amount" name="name"
-                                            value="">
+                                        <input type="text" placeholder="Nombre" id="input_add_amount" name="name" value="">
                                     </div>
                                     <div>
-                                        <label for="price"><i class='bx bx-wallet'></i></label>
-                                        
+                                        <label for="price"><i class='bx bx-wallet'></i></label>                                        
                                         <input type="text" placeholder="Cuanto" inputmode="numeric" class="price" id="input_add_amount" name="price">
+                                    </div>
+                                    <div>
+                                        <label for="category"><i class='bx bx-wallet'></i></label>                                        
+                                        <select name="category" class="categories_options">
+                                            <option value="1">Alimento</option>
+                                            <option value="2">Salud y belleza</option>
+                                            <option value="3">Entretenimiento y caprichos</option>
+                                            <option value="4">Inversiones y apuestas</option>
+                                            <option value="5">Limpieza y hogar</option>
+                                            <option value="6">Transporte</option>
+                                            <option value="7">Facturas</option>
+                                            <option value="8">Mascotas</option>
+                                            <option value="9">Ropa y calzado</option>
+                                            <option value="10">Otros</option>
+                                        </select>
                                     </div>
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="date" value="{{ $date_day }}">

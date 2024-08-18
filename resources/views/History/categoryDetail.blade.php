@@ -25,20 +25,7 @@
                     </div>
                 </div>
                 
-            @endforeach
-            {{-- @foreach ($categories as $category)
-                <a href="{{ route('hist.detailCategory', $category->id) }}" class="category c-{{ $category->id }}">
-
-                    <div class="icon">
-                        <i class='bx {{ getIconClass($category->name) }}'></i>
-                        <span>{{ $category->name }}</span>
-                    </div>
-
-                    <div class="total-price">
-                        <span>${{ $category->total == 0 ? 0 : formatCOP($category->total) }}</span>
-                    </div>
-                </a>
-            @endforeach --}}
+            @endforeach            
         </section>
 
     </section>

@@ -46,16 +46,16 @@ function formatDate($date) {
 function getIconClass($name) {
 
     $icons = [
-        'Alimento' => 'bxs-baguette',
-        'Salud y belleza' => 'bxs-spray-can',
-        'Tecnologia' => 'bx-joystick-alt',
-        'Negocios y apuestas' => 'bxl-bitcoin',
-        'Hogar' => 'bxs-home-smile',
-        'Transporte' => 'bxs-bus',
-        'Facturas' => 'bxs-receipt',
-        'Mascotas' => 'bxs-dog',
-        'Ropa y accesorios' => 'bxs-shopping-bag',
-        'Otros' => 'bx-menu',
+        'Alimento' => 'fa-burger',
+        'Salud y belleza' => 'fa-spray-can-sparkles',
+        'Entretenimiento y caprichos' => 'fa-gift',
+        'Inversiones y apuestas' => 'fa-toilet-paper"',
+        'Limpieza y hogar' => 'fa-toilet-paper',
+        'Transporte' => 'fa-bus',
+        'Facturas' => 'fa-receipt',
+        'Mascotas' => 'fa-paw',
+        'Ropa y calzado' => 'fa-bag-shopping',
+        'Otros' => 'fa-ellipsis',
     ];
 
     return $icons[$name] ?? 'bx-category';
