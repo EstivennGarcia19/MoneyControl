@@ -1397,15 +1397,7 @@ body {
     border: none;
 }
 
-/* #categoryModal .categories li:nth-child(1) {background-color: #2fcc71;}
-#categoryModal .categories li:nth-child(2) {background-color: #ea80fc;}
-#categoryModal .categories li:nth-child(3) {background-color: #78c9d0;}
-#categoryModal .categories li:nth-child(4) {background-color: #e49701;}
-#categoryModal .categories li:nth-child(5) {background-color: #9f7847;}
-#categoryModal .categories li:nth-child(6) {background-color: #ecdf5a;}
-#categoryModal .categories li:nth-child(7) {background-color: #3497db;}
-#categoryModal .categories li:nth-child(8) {background-color: #ecdf5a;}
-#categoryModal .categories li:nth-child(9) {background-color: #ccd2d2;} */
+
 #categoryModal .categories li:nth-child(1) {background-color: #2fcc71;}
 #categoryModal .categories li:nth-child(2) {background-color: #ea80fc;}
 #categoryModal .categories li:nth-child(3) {background-color: #78c9d0;}
@@ -2352,36 +2344,17 @@ body {
 }
 
 /* colores de la categoria */
-/* #cont-categories .category:nth-child(1) {border-color: #2fcc71;} */
+
 #cont-categories .c-1 .cont-icon {background-color: #2fcc71;}
-
-/* #cont-categories .category:nth-child(2) {border-color: #ea80fc;} */
 #cont-categories .c-2 .cont-icon {background-color: #ea80fc;}
-
-/* #cont-categories .category:nth-child(3) {border-color: #78c9d0;} */
 #cont-categories .c-3 .cont-icon {background-color: #78c9d0;}
-
-/* #cont-categories .category:nth-child(4) {border-color: #EFBA34;} */
 #cont-categories .c-4 .cont-icon {background-color: #EFBA34;}
-
-/* #cont-categories .category:nth-child(5) {border-color: #f05455;} */
 #cont-categories .c-5 .cont-icon {background-color: #f05455;}
-
-/* #cont-categories .category:nth-child(6)  {border-color: #ecdf5a;} */
 #cont-categories .c-6 .cont-icon {background-color: #ecdf5a;}
-
-/* #cont-categories .category:nth-child(7)  {border-color: #C327DB;} */
 #cont-categories .c-7 .cont-icon {background-color: #C327DB;}
-
-/* #cont-categories .category:nth-child(8) {border-color: #28ac60;} */
 #cont-categories .c-8 .cont-icon {background-color: #28ac60;}
-
-/* #cont-categories .category:nth-child(9) {border-color: #3497db;} */
 #cont-categories .c-9 .cont-icon {background-color: #3497db;}
-
-/* #cont-categories .category:nth-child(10) {border-color: #ebf1f1;} */
 #cont-categories .c-10 .cont-icon {background-color: #ebf1f1;}
-
 #cont-categories .category .total-price span {
     /* font-size: 20px; */
     font-weight: 700;

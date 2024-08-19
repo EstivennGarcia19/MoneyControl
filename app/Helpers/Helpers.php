@@ -49,7 +49,7 @@ function getIconClass($name) {
         'Alimento' => 'fa-burger',
         'Salud y belleza' => 'fa-spray-can-sparkles',
         'Entretenimiento y caprichos' => 'fa-gift',
-        'Inversiones y apuestas' => 'fa-toilet-paper"',
+        'Inversiones y apuestas' => 'bx bxl-bitcoin',
         'Limpieza y hogar' => 'fa-toilet-paper',
         'Transporte' => 'fa-bus',
         'Facturas' => 'fa-receipt',
